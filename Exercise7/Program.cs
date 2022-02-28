@@ -10,7 +10,7 @@
         int[] myArray = new int[n];
         int[] tempset = new int[k];
         int[] subset = new int[k];
-        int maxSum = 0, sum = 0, limit = n - k, inc = 0, inc2 = k;
+        int maxSum = 0, limit = n - k, inc = 0, inc2 = k;
 
         for (int i = 0; i < n; i++)
         {
@@ -18,25 +18,25 @@
             myArray[i] = int.Parse(Console.ReadLine());
         }
 
-        for (int i = 0; i<n ; i++)
+        for (int i = 0;inc <= limit; i++)
         {
             int tempsum = 0;
             for (int j = inc, l = 0; l < inc2; j++, l++)
             {
-
-                if (j == n) { break; }
                 tempset[l] = myArray[j];
-                tempsum += subset[l];
-                sum = tempsum;
+                tempsum += tempset[l];
             }
 
             k++;
             inc++;
-
-            if (sum > maxSum)
+            
+            if (tempsum > maxSum)
             {
-                maxSum = sum;
-                subset = tempset;
+                maxSum = tempsum;
+                for (int m = 0; m < inc2; m++)
+                {
+                    subset[m] = tempset[m];
+                }
             }
 
         }
