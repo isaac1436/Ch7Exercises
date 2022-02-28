@@ -22,55 +22,66 @@
         switch (choice)
         {
             case 1:
-                for (int i = 0; i < arrLength; i++)
-                {
-                    a = i;
-                    for (int j = i + 1; j < arrLength; j++)
-                    {
-                        if (arr[j] < arr[a])
-                        {
-                            a = j;
-                        }
-                    }
-
-                    b = arr[i];
-                    arr[i] = arr[a];
-                    arr[a] = b;
-                }
-
-                Console.Write("The sorted array is: ");
-
-                foreach (int element in arr)
-                {
-                    Console.Write(element);
-                }
+                ascSort(arr, arrLength, a, b);
                 break;
 
 
             case 2:
-                for (int i = 0; i < arrLength; i++)
-                {
-                    a = i;
-                    for (int j = i + 1; j < arrLength; j++)
-                    {
-                        if (arr[j] > arr[a])
-                        {
-                            a = j;
-                        }
-                    }
-
-                    b = arr[i];
-                    arr[i] = arr[a];
-                    arr[a] = b;
-                }
-
-                Console.Write("The sorted array is: ");
-
-                foreach (int element in arr)
-                {
-                    Console.Write(element);
-                }
+                descSort(arr, arrLength, a, b);
                 break;
+        }
+    }
+
+    public static void ascSort(int[] arr, int arrLength, int a, int b)
+    {
+        for (int i = 0; i < arrLength; i++)
+        {
+            a = i;
+            for (int j = i + 1; j < arrLength; j++)
+            {
+                if (arr[j] < arr[a])
+                {
+                    a = j;
+                }
+            }
+
+            b = arr[i];
+            arr[i] = arr[a];
+            arr[a] = b;
+        }
+
+        Console.Write("\n\nThe sorted array is: ");
+
+        foreach (int element in arr)
+        {
+            Console.Write(element);
+        }
+    }
+
+
+    public static void descSort(int[] arr, int arrLength, int a, int b)
+    {
+        for (int i = 0; i < arrLength; i++)
+        {
+            a = i;
+            for (int j = i + 1; j < arrLength; j++)
+            {
+                if (arr[j] > arr[a])
+                {
+                    a = j;
+                }
+            }
+
+            b = arr[i];
+            arr[i] = arr[a];
+            arr[a] = b;
+        }
+
+        Console.Write("\n\nThe sorted array is: ");
+
+        foreach (int element in arr)
+        {
+            Console.Write(element);
         }
     }
 }
