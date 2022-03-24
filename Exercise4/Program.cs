@@ -13,15 +13,17 @@
             ints[i] = int.Parse(Console.ReadLine());
         }
 
-        int tempVal = 0, val = 0, count = 0;
+        int val = 0, count = 2;
         int[] ints2 = ints;
+        int[] ints3 = new int[length];
+        int rptCount=1;
         for (int i = 0; i < ints.Length; i++)
         {
-            for (int j = 0; j < ints.Length; j++)
+            for (int j = i; j < ints.Length; j++)
             {
                 if (ints[i] == ints2[j])
                 {
-                    tempVal = ints[i];
+                    int tempVal = ints[i];
                     tempCount++;
                 }
                 else { tempCount = 0; }
@@ -30,10 +32,33 @@
                 {
                     count = tempCount;
                     val = ints[i];
+                    ints3[rptCount] = val;
                 }
+
+                if (count == tempCount && val != ints[i])
+                {
+                    ints3[++rptCount]=ints[i];
+                }
+            }
+            if (ints[i] == ints2[i])
+            {
+                i++;
             }
         }
 
-        Console.WriteLine("The largest conseutive sequence is " + count + " occurences of " + val);
+        if (rptCount == 0)
+        {
+            Console.WriteLine("The largest conseutive sequence is " + count + " occurences of " + val);
+        }
+
+        else if(rptCount!=0 && rptCount>=count)
+        {
+            Console.Write("The largest conseutive sequence is " + count + " occurences of ");
+
+            for(int i=0; i<rptCount; i++)
+            {
+                Console.Write(ints3[i]+" ");
+            }
+        }
     }
 }
